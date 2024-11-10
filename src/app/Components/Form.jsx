@@ -12,7 +12,7 @@ const Form = () => {
     const { setIsLoged, setUserId , dataText ,Lang } = useContext(UserContext);
     const [mode, setMode] = useState('sign');
     const [viewPas, setViewPas] = useState(false);
-    const [formData, setFormData] = useState({ username: 'fares', password: '123456', name: '', email: '' });
+    const [formData, setFormData] = useState({ username: '', password: '', name: '', email: '' });
     const [errors, setErrors] = useState({ username: '', password: '', name: '', email: '' });
     const [getpassResult, setGetPassResult] = useState('');
     const [isCreated, setIsCreated] = useState(false);
@@ -214,7 +214,7 @@ const Form = () => {
 
                 <p className='text-my_red font-medium'>
                     {mode === 'create' && (isCreated ? <span className='text-green-600 font-bold'>{Lang ==='en'? 'Account Created!':'تم انشاء الحساب'}</span> : Lang ==='en'?'Create your account':"قم بانشاء حساب")}
-                    {mode === 'get' && Lang ==='en'?'Get your password':"احصل على كلمة المرور"}
+                    {mode === 'get' ? Lang ==='en'?'Get your password':"احصل على كلمة المرور":''}
                 </p>
 
                 <div className="flex flex-col w-fit text-my_red">
