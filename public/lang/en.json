@@ -1,0 +1,83 @@
+{
+    "logo":"Eleanor",
+    "home":"Home",
+    "Wardrobe":"Wardrobe",
+    "login":"LOGIN",
+
+    "Donate":"Donate it",
+
+    "ReuseIt":"Reuse it",
+
+    "hi":"hi",
+
+    "logout":"log out",
+
+    "mainText":"Find The Best Fashion Style For You",
+    "disText1":"Eleanor ",
+    "disText2":"is an electronic wardrobe application that aims to organize and coordinate personal fashion. It collects all the clothes available in your closet in an organized manner, making it easier to manage and coordinate your daily look in a smooth, distinctive, and orderly style.",
+    "btnText":"try now",
+   
+   
+    "Category":"Category",
+    "AddCategory":"Add Category",
+    "Details":"Details",
+    "Used":"Used",
+    "NoCat":"No Category To View",
+
+    "Items":"Items",
+    "AddItems":"Add Items",
+    "Noitems":"No items",
+
+
+    "CatName":"your category name",
+    "SelOp":"Select an option",
+    "Top":"Top",
+    "Bottom":"Bottom",
+    "Both":"Both",
+    "addBtn":"add",
+
+    
+    "AskDlete":"Do you want to delete it ?",
+    "Delete":"Delete",
+    "Cancel":"Cancel",
+    
+
+
+
+    "UpImg":"Upload Image",
+    "Upload":"Upload",
+
+    "addUsedAnim":"added to used item",
+    "useIt":"use it",
+
+    "EmCat":"Empty Category",
+    "NoVw":"No Items To View",
+
+    "Reuse":"reuse it",
+
+
+    "viDt":"view details",
+    "HiDt":"hide details",
+
+    "AddDate":"Adding Data",
+    "UsTi":"Use Time",
+
+
+
+
+    "Username":"Username",
+    "Password":"Password",
+    "Name":"Name",
+    "Email":"Email",
+    "ForgotPassword":"Forgot password",
+    "CrOne":"Create one",
+    "MSGCER":"Don't have an accountdd",
+    "SigIn":"Sign in",
+    "AlHave":" Already have an account"
+
+
+
+
+
+  
+}
