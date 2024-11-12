@@ -13,53 +13,48 @@ const ImageUpload = () => {
   const api = process.env.NEXT_PUBLIC_API_KEY; // Change this to your backend API when deployed
   
   const handleImageChange = (e) => {
-    const selectedFile = e.target.files[0];
-
-    // Check file type
-    if (selectedFile && !selectedFile.type.startsWith('image/')) {
-      setStatusMessage(Lang ==='en'?'Please upload a valid image file.':'اختر صوره');
+    const selectedFiles = Array.from(e.target.files);
+    if (selectedFiles.some(file => !file.type.startsWith('image/'))) {
+      setStatusMessage(Lang === 'en' ? 'Please upload valid image files.' : 'اختر صور صالحة');
       return;
     }
-
-    // Check file size (e.g., 5MB limit)
-    if (selectedFile.size > 5 * 1024 * 1024) {
-      setStatusMessage(Lang ==='en'?'File size must be less than 5MB.':"حجم الملفيجبب ان لا يكون اكر من 5 م ب");
+  
+    if (selectedFiles.some(file => file.size > 5 * 1024 * 1024)) {
+      setStatusMessage(Lang === 'en' ? 'File size must be less than 5MB.' : 'حجم الملف يجب أن لا يكون أكثر من 5 م ب');
       return;
     }
-
-    setImage(selectedFile);
+  
+    setImage(selectedFiles);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!image) {
-      setStatusMessage(Lang ==='en'?'Please select an image to upload.':"اختر صوره");
+  
+    if (!image || image.length === 0) {
+      setStatusMessage(Lang === 'en' ? 'Please select images to upload.' : 'اختر صورًا للتحميل');
       return;
     }
-
+  
     const formData = new FormData();
-    formData.append('image', image);
-
+    image.forEach((file) => formData.append('images', file));
+  
     try {
       setLoader(true);
-      // Check if userId is available
       if (!userId) {
         setStatusMessage('User ID is not available.');
         return;
       }
-      setStatusMessage(Lang ==='en'?'uploading...':"...تحميل");
+      setStatusMessage(Lang === 'en' ? 'Uploading...' : 'تحميل...');
+  
       const response = await axios.post(`${api}/uploadImage/${userId}/${REF}`, formData);
-
-      setStatusMessage(Lang ==='en'?"Image uploaded successfully":"تم رفع الصوره بنجاح"); // Display success message
-      setImage(null); // Reset the image state
+      setStatusMessage(Lang === 'en' ? 'Images uploaded successfully' : 'تم رفع الصور بنجاح');
+      setImage([]);
     } catch (error) {
-      setStatusMessage(error.response?.data.message || Lang ==='en'?'Error uploading image':"لم يتم رفع الصوره");
+      setStatusMessage(error.response?.data.message || (Lang === 'en' ? 'Error uploading images' : 'لم يتم رفع الصور'));
     } finally {
       setLoader(false);
     }
   };
-
   
 
   if (!dataText) {
@@ -79,7 +74,7 @@ const ImageUpload = () => {
           className='cursor-pointer z-30 absolute right-3 top-3'
           onClick={() => setViewUplImg(false)}
         />
-        <h2 className="text-xl text-my_light font-bold uppercase mt-4">{dataText.UpImg}  </h2>
+        <h2 className="text-xl text-my_light font-bold uppercase mt-4">{dataText.UpImg}</h2>
         {
           Loader ?
             <div className="bg-my_light relative h-[50px] w-[200px] rounded-md ">
@@ -91,6 +86,7 @@ const ImageUpload = () => {
                 <input
                   type="file"
                   accept="image/*"
+                  multiple 
                   onChange={handleImageChange}
                   className="max-w-[250px]"
                 />
